@@ -1,38 +1,24 @@
-module.exports = function(sequelize, datatypes) {
-    let alias = "comentario";
-
-    /*let cols = {
-         id : {
-             type : datatypes.INTEGER,
-             primaryKey: true,
-             autoIncrement: true
-             
-         },
-         order_id : {
-
-         },
-         rating : {
-            type : datatypes.INTEGER,
-
-         },
-         content : {
-            type : datatypes.STRING,
-
-         },
-         created_at : {
-
-         },
-         updated_at : {
-
-         }
-     }
-     let config = {
-         tableName : "comments",
-         timestamps : false
-     }*/
-
-    let comments = sequelize.define(alias, cols, config);
-
-
-    return comments;
+module.exports = (sequelize, dataTypes) => {
+    const Categories = sequelize.define('Categories', {
+        id : {
+            type : dataTypes.INTEGER.UNSIGNED,
+            primaryKey : true,
+            allowNull : false,
+            autoIncrement : true
+        },
+        name : {
+            type : dataTypes.STRING(45),
+            allowNull : false,
+        }    
+    },{
+        tableName : 'categories',
+        timestamps : false
+    })
+    Categories.associate = function(models){
+        Categories.hasMany(models.Products, {
+            as: "products",
+            foreignKey: "category_id"
+        })
+    }
+    return Categories
 }

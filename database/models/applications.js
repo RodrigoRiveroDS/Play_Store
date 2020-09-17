@@ -1,38 +1,47 @@
-module.exports = function(sequelize, datatypes) {
-    let alias = "comentario";
-
-    /*let cols = {
-         id : {
-             type : datatypes.INTEGER,
-             primaryKey: true,
-             autoIncrement: true
-             
-         },
-         order_id : {
-
-         },
-         rating : {
-            type : datatypes.INTEGER,
-
-         },
-         content : {
-            type : datatypes.STRING,
-
-         },
-         created_at : {
-
-         },
-         updated_at : {
-
-         }
-     }
-     let config = {
-         tableName : "comments",
-         timestamps : false
-     }*/
-
-    let comments = sequelize.define(alias, cols, config);
-
-
-    return comments;
+module.exports = (sequelize, dataTypes) => {
+    const Products = sequelize.define('applications', {
+        id : {
+            type : dataTypes.INTEGER.UNSIGNED,
+            primaryKey : true,
+            allowNull : false,
+            autoIncrement : true
+        },
+        product_name : {
+            type : dataTypes.STRING(45),
+            allowNull : false,
+        },
+        stock : {
+            type : dataTypes.INTEGER(10).UNSIGNED,
+        },
+        price : {
+            type : dataTypes.INTEGER(10).UNSIGNED,
+            allowNull : false,
+        },
+        description : {
+            type : dataTypes.TEXT,
+            allowNull : false,
+        },
+        image : {
+            type : dataTypes.STRING(200),
+        }      
+    },{
+        tableName : 'applications',
+        timestamps : false
+    })
+    Products.associate = function(models){
+        Products.belongsTo(models.Categories, {
+            as: "categories",
+            foreignKey: "category_id"
+        })
+    }
+    Products.associate = function(models){
+        Products.belongsToMany(models.Carts, {
+            as : "carts",
+            through : "carts_products",
+            foreignKey : "products_id",
+            otherKey : "carts_id",
+            timestamps : false
+        })
+    }
+    return applications
 }

@@ -1,38 +1,36 @@
-module.exports = function(sequelize, datatypes) {
-   /* let alias = "comentario";
+module.exports = (sequelize, dataTypes) => {
+    const Users = sequelize.define('Users', {
+        id : {
+            type : dataTypes.INTEGER.UNSIGNED,
+            primaryKey : true,
+            allowNull : false,
+            autoIncrement : true
+        },
+        user_name : {
+            type : dataTypes.STRING(45),
+            allowNull : false,
 
-    let cols = {
-         id : {
-             type : datatypes.INTEGER,
-             primaryKey: true,
-             autoIncrement: true
-             
-         },
-         order_id : {
+        },
+        email : {
+            type : dataTypes.STRING(45),
+            allowNull : false,
 
-         },
-         rating : {
-            type : datatypes.INTEGER,
+        },
+        password : {
+            type : dataTypes.STRING(45),
+            allowNull : false,
 
-         },
-         content : {
-            type : datatypes.STRING,
-
-         },
-         created_at : {
-
-         },
-         updated_at : {
-
-         }
-     }
-     let config = {
-         tableName : "comments",
-         timestamps : false
-     }*/
-
-    let comments = sequelize.define(alias, cols, config);
-
-
-    return comments;
+        },
+        created_at: {
+            
+        },
+        updated_at: {
+            
+        }     
+    },{
+        tableName : 'users',
+        timestamps : false
+    })
+   
+    return Users
 }
