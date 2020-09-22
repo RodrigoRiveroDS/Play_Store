@@ -1,7 +1,7 @@
 let controller = {
    
-    products : function(req, res, next) {
-        res.render('compra');
+    login : function(req, res, next) {
+        res.render('login');
       },
     
 
