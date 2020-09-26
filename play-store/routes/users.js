@@ -4,8 +4,10 @@ var usersControllers =  require('../controllers/usersControlles');
 
 /* GET users listing. */
 
-router.get('/', usersControllers.login);
+router.get('/register', /*guestMiddleware,*/ usersControllers.register);
 
+router.get('/login', usersControllers.login);
+//router.post('/login', usersControllers.logued);
 
 
 

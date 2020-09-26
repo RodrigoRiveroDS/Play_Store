@@ -1,13 +1,13 @@
 let controller = {
-   
+
+  register : function(req, res, next) {
+    res.render('register');
+  },
     login : function(req, res, next) {
         res.render('login');
       },
 
-      alta : function(req, res, next) {
-        res.render('alta');
-      },
-    
+     
 
      
 

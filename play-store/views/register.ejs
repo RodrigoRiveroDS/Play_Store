@@ -1,0 +1,36 @@
+<%-include("./partials/header") %>
+<div class="formulario mt-3">
+    <h2>Registrate</h2>
+    <ul>
+    <% if(typeof errors != 'undefined') { %>      
+        <% for(let i=0; i < errors.length; i++) { %>
+          <li>
+            <%= errors[i].msg %>
+          </li>
+        <% } %>
+    <% } %>
+    </ul>
+      <form method="POST" id="registerForm">
+        <div class="form-group col-4 mt-2">
+          <label for="exampleInputUser">Nombre de Usuario</label>
+          <input type="text" class="form-control" name="user" id="exampleInputUser" aria-describedby="userHelp">
+          <span class="hide">El nombre de usuario debe tener al menos 2 caracteres.</span>
+          </div>
+        <div class="form-group col-4 mt-2">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <span class="hide">Debe ser un email válido.</span>
+        </div>
+        <div class="form-group col-4 mt-2">
+          <label for="exampleInputPassword1">Contraseña</label>
+          <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+          <span class="hide">La contraseña debe tener al menos 8 caracteres.</span>
+          <small id="emailHelp" class="form-text text-muted">Nunca compartas tu contraseña con nadie.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+
+
+
+<%-include("./partials/footer") %>
