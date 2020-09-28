@@ -1,47 +1,47 @@
 module.exports = (sequelize, dataTypes) => {
-    const Products = sequelize.define('products', {
+    const applications = sequelize.define('applications', {
         id : {
             type : dataTypes.INTEGER.UNSIGNED,
             primaryKey : true,
             allowNull : false,
             autoIncrement : true
         },
-        product_name : {
+        name : {
             type : dataTypes.STRING(45),
             allowNull : false,
         },
-        stock : {
-            type : dataTypes.INTEGER(10).UNSIGNED,
-        },
-        price : {
-            type : dataTypes.INTEGER(10).UNSIGNED,
-            allowNull : false,
+        image_url : {
+            type : dataTypes.STRING(200),
         },
         description : {
             type : dataTypes.TEXT,
             allowNull : false,
         },
-        image : {
-            type : dataTypes.STRING(200),
-        }      
+       
+        price : {
+            type : dataTypes.INTEGER(10).UNSIGNED,
+            allowNull : false,
+        },
+        
+              
     },{
-        tableName : 'products',
+        tableName : 'applictions',
         timestamps : true
     })
     applications.associate = function(models){
-        Products.belongsTo(models.Categories, {
+        applications.belongsTo(models.Categories, {
             as: "categories",
             foreignKey: "category_id"
         })
     }
-    Products.associate = function(models){
-        Products.belongsToMany(models.users, {
+    applications.associate = function(models){
+        applications.belongsToMany(models.users, {
             as : "users",
-            //through : "carts_products",
-            foreignKey : "products_id",
-           // otherKey : "carts_id",
+            //through : "carts_applications",
+            foreignKey : "applications_id",
+           otherKey : "categories_id",
             timestamps : true
         })
     }
-    return aplicattions
+    return applicattions
 }

@@ -7,7 +7,9 @@ let controller = {
       alta : function(req, res, next) {
         res.render('alta');
       },
-    
+     compra : function(req, res, next) {
+        res.render('compra');
+      },
 
       
 

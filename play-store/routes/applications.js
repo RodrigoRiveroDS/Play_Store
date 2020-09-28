@@ -5,6 +5,7 @@ var applicationsControllers =  require('../controllers/applications');
 
 router.get('/', applicationsControllers.products);
 router.get('/alta', applicationsControllers.alta);
+router.get('/compra', applicationsControllers.compra);
 
 
 

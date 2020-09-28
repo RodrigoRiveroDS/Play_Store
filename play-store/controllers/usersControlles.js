@@ -1,3 +1,5 @@
+
+
 let controller = {
 
   register : function(req, res, next) {
@@ -6,7 +8,9 @@ let controller = {
     login : function(req, res, next) {
         res.render('login');
       },
-
+      logeado : function(req, res, next) {
+        res.render('logeado');
+      },
      
 
      
